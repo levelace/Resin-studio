@@ -26,7 +26,7 @@ export function AddToCartForm({ product }: Props) {
   const router = useRouter();
   const [qty, setQty] = useState(1);
   const [custom, setCustom] = useState("");
-  const outOfStock = product.stock === 0;
+  const outOfStock = product.stock <= 0;
 
   const handleAdd = (goToCart: boolean) => {
     add({

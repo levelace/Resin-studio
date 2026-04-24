@@ -153,6 +153,7 @@ model Order {
   paystackRef      String?  @unique
   paystackAuthUrl  String?
   notes            String?
+  needsReview      Boolean  @default(false) // true when fulfilment couldn't decrement stock cleanly
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 

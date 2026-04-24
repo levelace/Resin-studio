@@ -94,10 +94,10 @@ export function CartView() {
                   type="number"
                   min={1}
                   value={line.quantity}
-                  onChange={(e) => updateQty(line.productId, Number(e.target.value))}
+                  onChange={(e) => updateQty(line.productId, Number(e.target.value), line.customization)}
                   className="w-20"
                 />
-                <Button size="icon" variant="ghost" aria-label="Remove" onClick={() => remove(line.productId)}>
+                <Button size="icon" variant="ghost" aria-label="Remove" onClick={() => remove(line.productId, line.customization)}>
                   <Trash2 className="h-4 w-4" />
                 </Button>
               </div>

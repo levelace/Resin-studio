@@ -15,11 +15,17 @@ export type CartLine = {
 type Ctx = {
   items: CartLine[];
   add: (line: CartLine) => void;
-  remove: (productId: string) => void;
-  updateQty: (productId: string, qty: number) => void;
+  remove: (productId: string, customization?: string) => void;
+  updateQty: (productId: string, qty: number, customization?: string) => void;
   clear: () => void;
   subtotalMinor: number;
 };
+
+// A cart line is uniquely identified by (productId, customization). The same
+// physical product can appear multiple times with different customisation
+// text (e.g. one mug engraved "Alice", another "Bob").
+const sameLine = (a: Pick<CartLine, "productId" | "customization">, productId: string, customization?: string) =>
+  a.productId === productId && (a.customization ?? "") === (customization ?? "");
 
 const CartCtx = createContext<Ctx | null>(null);
 const STORAGE_KEY = "resin-studio:cart:v1";
@@ -55,14 +61,14 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
-  const remove = useCallback((productId: string) => {
-    setItems((prev) => prev.filter((p) => p.productId !== productId));
+  const remove = useCallback((productId: string, customization?: string) => {
+    setItems((prev) => prev.filter((p) => !sameLine(p, productId, customization)));
   }, []);
 
-  const updateQty = useCallback((productId: string, qty: number) => {
+  const updateQty = useCallback((productId: string, qty: number, customization?: string) => {
     setItems((prev) =>
       prev
-        .map((p) => (p.productId === productId ? { ...p, quantity: Math.max(1, qty) } : p))
+        .map((p) => (sameLine(p, productId, customization) ? { ...p, quantity: Math.max(1, qty) } : p))
         .filter((p) => p.quantity > 0),
     );
   }, []);

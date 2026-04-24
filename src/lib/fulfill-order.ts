@@ -42,10 +42,24 @@ export async function fulfillOrder(paystackRef: string): Promise<{
         });
       }
       if (it.kind === "product" && it.productId) {
-        await tx.product.update({
-          where: { id: it.productId },
+        // Conditional decrement: only if we still have at least `quantity`
+        // in stock. If stock has drifted (oversell race), we clamp to zero
+        // rather than letting it go negative — the order is already paid,
+        // so we honour it and flag for manual review via `needsReview`.
+        const dec = await tx.product.updateMany({
+          where: { id: it.productId, stock: { gte: it.quantity } },
           data: { stock: { decrement: it.quantity } },
         });
+        if (dec.count === 0) {
+          await tx.product.updateMany({
+            where: { id: it.productId },
+            data: { stock: 0 },
+          });
+          await tx.order.update({
+            where: { id: order.id },
+            data: { needsReview: true },
+          });
+        }
       }
     }
 

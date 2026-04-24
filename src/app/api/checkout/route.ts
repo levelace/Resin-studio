@@ -103,6 +103,22 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "One or more items are no longer available" }, { status: 409 });
   }
 
+  // Sum requested quantity per productId (across all customisation lines)
+  // and verify we still have enough stock before we create the order.
+  const requestedByProduct = new Map<string, number>();
+  for (const i of parsed.data.items) {
+    requestedByProduct.set(i.productId, (requestedByProduct.get(i.productId) ?? 0) + i.quantity);
+  }
+  for (const p of products) {
+    const need = requestedByProduct.get(p.id) ?? 0;
+    if (p.stock < need) {
+      return NextResponse.json(
+        { error: `Not enough stock for "${p.title}" — only ${Math.max(0, p.stock)} left` },
+        { status: 409 },
+      );
+    }
+  }
+
   const itemsData = parsed.data.items.map((i) => {
     const p = products.find((pp) => pp.id === i.productId);
     if (!p) throw new Error("product missing");
