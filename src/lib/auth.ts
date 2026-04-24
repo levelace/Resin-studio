@@ -58,6 +58,8 @@ if (process.env.EMAIL_SERVER_HOST && process.env.EMAIL_FROM) {
   );
 }
 
+const isProd = process.env.NODE_ENV === "production";
+
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers,
@@ -65,12 +67,15 @@ export const authOptions: NextAuthOptions = {
   pages: { signIn: "/login" },
   cookies: {
     sessionToken: {
-      name: "__Secure-next-auth.session-token",
+      // The __Secure- cookie name prefix is only allowed when secure=true, which
+      // requires HTTPS. On a plain-HTTP dev server the browser silently drops the
+      // cookie, so we only use the prefix in production.
+      name: isProd ? "__Secure-next-auth.session-token" : "next-auth.session-token",
       options: {
         httpOnly: true,
         sameSite: "lax",
         path: "/",
-        secure: process.env.NODE_ENV === "production",
+        secure: isProd,
       },
     },
   },
