@@ -33,16 +33,18 @@ export function isAdminEmail(email?: string | null) {
 }
 
 export const siteConfig = {
-  name: process.env.NEXT_PUBLIC_SITE_NAME ?? "Resin Studio",
+  name: process.env.NEXT_PUBLIC_SITE_NAME ?? "Dee's Resin Craft & Souvenirs Collection",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   description:
-    "Handcrafted resin art, gift packaging, custom print T-shirts, mugs, and scented candles — made in Ghana. Plus online resin courses with video lessons and PDF guides.",
+    "Handcrafted resin art, souvenirs, gift packaging, custom print T-shirts, mugs, and scented candles — made in Kumasi, Ghana. Plus online resin courses with video lessons and PDF guides.",
   keywords: [
     "resin art Ghana",
-    "gift packaging Accra",
+    "gift packaging Kumasi",
+    "souvenirs Kumasi",
     "custom T-shirt printing Ghana",
     "scented candles",
     "resin classes online",
     "handmade gifts Ghana",
+    "gift shop Kumasi",
   ],
 };

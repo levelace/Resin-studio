@@ -12,7 +12,7 @@ const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfa
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — Resin art, gifts & custom prints, made in Ghana`,
+    default: `${siteConfig.name} — Resin art, souvenirs & gifts, made in Kumasi, Ghana`,
     template: `%s · ${siteConfig.name}`,
   },
   description: siteConfig.description,

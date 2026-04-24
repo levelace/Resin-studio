@@ -124,11 +124,11 @@ export function CartView() {
           )}
           <div>
             <Label htmlFor="phone">Phone (WhatsApp preferred)</Label>
-            <Input id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="+233 20 000 0000" className="mt-1" />
+            <Input id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="+233 24 398 1613" className="mt-1" />
           </div>
           <div>
             <Label htmlFor="address">Delivery address</Label>
-            <Input id="address" required value={address} onChange={(e) => setAddress(e.target.value)} placeholder="GA-123-4567, Accra" className="mt-1" />
+            <Input id="address" required value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Manhiya, Kumasi" className="mt-1" />
           </div>
         </div>
 

@@ -1,4 +1,4 @@
-// Prisma schema for Resin Studio
+// Prisma schema for Dee's Resin Craft & Souvenirs Collection
 // Dev uses SQLite for zero-config; production should use PostgreSQL
 // (change provider + DATABASE_URL, then run `prisma migrate dev`).
 

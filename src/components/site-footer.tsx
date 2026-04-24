@@ -13,7 +13,7 @@ export function SiteFooter() {
             <span className="text-resin">{siteConfig.name}</span>
           </div>
           <p className="text-sm text-muted-foreground">
-            Handcrafted resin art and thoughtful gift packaging, made in Ghana. Custom prints, scented candles,
+            Handcrafted resin art, souvenirs, and thoughtful gift packaging, made in Kumasi, Ghana. Custom prints, scented candles,
             and online resin courses.
           </p>
         </div>
@@ -38,12 +38,12 @@ export function SiteFooter() {
         <div>
           <h4 className="mb-3 text-sm font-semibold">Contact</h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
-            <li className="flex items-center gap-2"><Mail className="h-4 w-4" /> hello@resinstudio.gh</li>
-            <li className="flex items-center gap-2"><Phone className="h-4 w-4" /> +233 20 000 0000</li>
-            <li className="flex items-center gap-2"><Instagram className="h-4 w-4" /> @resinstudio</li>
+            <li className="flex items-center gap-2"><Mail className="h-4 w-4" /> hello@deesresincraft.gh</li>
+            <li className="flex items-center gap-2"><Phone className="h-4 w-4" /> +233 24 398 1613</li>
+            <li className="flex items-center gap-2"><Instagram className="h-4 w-4" /> @deesresincraft</li>
           </ul>
           <p className="mt-4 text-xs text-muted-foreground">
-            Accra, Ghana • Delivery nationwide • Pay with card or Mobile Money (MTN MoMo, Telecel Cash, AirtelTigo Money)
+            Manhiya Palace Museum, Kumasi, Ghana • Delivery nationwide • Pay with card or Mobile Money (MTN MoMo, Telecel Cash, AirtelTigo Money)
           </p>
         </div>
       </div>

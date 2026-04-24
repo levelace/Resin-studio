@@ -1,4 +1,4 @@
-/* Seed script for Resin Studio. Run `npm run db:seed` after `npm run db:push`. */
+/* Seed script for Dee's Resin Craft & Souvenirs Collection. Run `npm run db:seed` after `npm run db:push`. */
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 

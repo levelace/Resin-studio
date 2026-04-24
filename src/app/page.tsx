@@ -40,7 +40,7 @@ export default async function HomePage() {
               className="mb-5 w-fit border-resin-gold/50 bg-resin-gold/5 text-resin-gold"
             >
               <Sparkles className="mr-1.5 h-3.5 w-3.5" />
-              Handmade in Accra · Ghana
+              Handmade in Kumasi · Ghana
             </Badge>
             <h1 className="text-5xl font-bold leading-[1.05] md:text-7xl">
               Poured with care.
@@ -241,7 +241,7 @@ export default async function HomePage() {
             name: siteConfig.name,
             description: siteConfig.description,
             url: siteConfig.url,
-            address: { "@type": "PostalAddress", addressCountry: "GH", addressLocality: "Accra" },
+            address: { "@type": "PostalAddress", addressCountry: "GH", addressLocality: "Kumasi" },
             currenciesAccepted: "GHS",
             paymentAccepted: "Mobile Money, Visa, Mastercard",
           }),
