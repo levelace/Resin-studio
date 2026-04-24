@@ -42,14 +42,14 @@ export default async function HomePage() {
               <Sparkles className="mr-1.5 h-3.5 w-3.5" />
               Handmade in Kumasi · Ghana
             </Badge>
-            <h1 className="text-5xl font-bold leading-[1.05] md:text-7xl">
+            <h1 className="text-5xl font-bold leading-[1.05] md:text-7xl text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
               Poured with care.
               <br />
               <span className="text-resin bg-[length:200%_200%] animate-pour">
                 Wrapped with intention.
               </span>
             </h1>
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-6 max-w-lg text-lg leading-relaxed text-foreground/90 drop-shadow-[0_1px_6px_rgba(0,0,0,0.4)]">
               Resin art, custom-printed gifts, scented candles, and thoughtful paper packaging — plus online
               courses for anyone who wants to make their own.
             </p>
@@ -61,7 +61,7 @@ export default async function HomePage() {
                 <Link href="/courses">Learn resin art</Link>
               </Button>
             </div>
-            <div className="mt-10 grid grid-cols-3 gap-3 text-xs text-muted-foreground">
+            <div className="mt-10 grid grid-cols-3 gap-3 text-xs text-foreground/80">
               <div className="flex items-center gap-1.5"><ShieldCheck className="h-4 w-4 text-resin-gold" /> Secure checkout</div>
               <div className="flex items-center gap-1.5"><Truck className="h-4 w-4 text-resin-gold" /> Nationwide delivery</div>
               <div className="flex items-center gap-1.5"><GraduationCap className="h-4 w-4 text-resin-gold" /> Beginner-friendly</div>
