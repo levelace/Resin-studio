@@ -2,26 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 40 40% 98%;
+    --foreground: 25 30% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 25 30% 12%;
+    --primary: 340 65% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 35 55% 92%;
+    --secondary-foreground: 25 30% 15%;
+    --muted: 35 30% 94%;
+    --muted-foreground: 25 12% 40%;
+    --accent: 40 85% 62%;
+    --accent-foreground: 25 30% 12%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 30 15% 88%;
+    --input: 30 15% 88%;
+    --ring: 340 65% 48%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 25 20% 8%;
+    --foreground: 40 20% 96%;
+    --card: 25 20% 12%;
+    --card-foreground: 40 20% 96%;
+    --primary: 340 65% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 25 15% 18%;
+    --secondary-foreground: 40 20% 96%;
+    --muted: 25 15% 15%;
+    --muted-foreground: 40 10% 65%;
+    --accent: 40 85% 62%;
+    --accent-foreground: 25 30% 10%;
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 25 15% 22%;
+    --input: 25 15% 22%;
+    --ring: 340 65% 60%;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .container-prose {
+    @apply mx-auto max-w-3xl px-4;
   }
 }
