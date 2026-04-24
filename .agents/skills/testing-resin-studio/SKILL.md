@@ -1,4 +1,4 @@
-# Testing skill — Resin Studio storefront
+# Testing skill — Dee's Resin Craft & Souvenirs Collection (Resin Studio codebase)
 
 Next.js 14 (App Router) + Tailwind + shadcn + Prisma (SQLite locally) + NextAuth (credentials) + Paystack checkout. Ghana-focused, GHS currency.
 
@@ -53,6 +53,8 @@ Neither secret is needed for the cart/stock/theme tests in section above.
 
 ## Gotchas
 
+- **`.env` overrides siteConfig defaults**: `NEXT_PUBLIC_SITE_NAME` in `.env` takes precedence over the hardcoded default in `src/lib/utils.ts`. After a rebrand or name change, the `.env` file may still have the old name (since `.env` is gitignored and not overwritten by maintenance). Always check `.env` matches `.env.example` when testing branding changes — update or delete `.env` and restart the dev server.
+- **Port conflicts**: If port 3000 is already in use, Next.js auto-falls back to 3001. Check the dev server output for the actual URL.
 - **Auth cookie prefix**: NextAuth is configured to use `next-auth.session-token` in dev (non-`__Secure-`). If you change this and run on `http://localhost`, browsers will silently drop the cookie and registrations will "succeed" but not log the user in. See `src/app/api/auth/[...nextauth]/route.ts`.
 - **Downlevel iteration**: the repo's `tsconfig` doesn't enable `downlevelIteration`, so `[...new Set(...)]` won't typecheck — use `Array.from(new Set(...))` instead.
 - **Stock UI**: out-of-stock check is `product.stock <= 0`, not `=== 0`. If you ever force-negative stock for testing, the UI still correctly hides the CTA.
