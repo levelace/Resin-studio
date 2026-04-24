@@ -10,7 +10,7 @@ export default function AboutPage() {
     <div className="container-prose py-16">
       <h1 className="text-4xl font-bold md:text-5xl">About the studio</h1>
       <p className="mt-4 text-lg text-muted-foreground">
-        We&apos;re a small Accra-based studio making resin art, thoughtful packaging, and custom-printed gifts by hand.
+        We&apos;re a small Kumasi-based studio making resin art, souvenirs, thoughtful packaging, and custom-printed gifts by hand.
       </p>
       <div className="prose prose-lg mt-8 max-w-none leading-relaxed text-foreground/90">
         <p>

@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 
 export const metadata: Metadata = {
   title: "Gallery",
-  description: "A gallery of handcrafted resin art, custom-print gifts, and scented candle work from our Accra studio.",
+  description: "A gallery of handcrafted resin art, souvenirs, custom-print gifts, and scented candle work from our Kumasi studio.",
 };
 
 export const revalidate = 120;

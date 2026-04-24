@@ -11,11 +11,11 @@ import { formatPrice, siteConfig } from "@/lib/utils";
 export const revalidate = 120;
 
 const categories = [
-  { slug: "resin", title: "Resin art", Icon: Palette, blurb: "One-of-a-kind coasters, trays, jewellery, wall art." },
-  { slug: "gift-box", title: "Gift boxes & bags", Icon: Package, blurb: "Hand-folded paper boxes and bags for any occasion." },
-  { slug: "tshirt", title: "Custom T-shirts", Icon: Shirt, blurb: "Upload your design — DTF printing on premium cotton." },
-  { slug: "mug", title: "Mugs", Icon: Coffee, blurb: "Personalised ceramic mugs, dishwasher-safe." },
-  { slug: "candle", title: "Scented candles", Icon: Flame, blurb: "Soy-wax candles with natural fragrance blends." },
+  { slug: "resin", title: "Resin art", Icon: Palette, blurb: "One-of-a-kind coasters, trays, jewellery, wall art.", brand: "K&D Resincraft" },
+  { slug: "gift-box", title: "Gift boxes & bags", Icon: Package, blurb: "Hand-folded paper boxes and bags for any occasion.", brand: "K&D Resincraft" },
+  { slug: "tshirt", title: "Custom T-shirts", Icon: Shirt, blurb: "Upload your design — DTF printing on premium cotton.", brand: "K&D Resincraft" },
+  { slug: "mug", title: "Mugs", Icon: Coffee, blurb: "Personalised ceramic mugs, dishwasher-safe.", brand: "K&D Resincraft" },
+  { slug: "candle", title: "Scented candles", Icon: Flame, blurb: "Soy-wax candles with natural fragrance blends.", brand: "D'LUMIÈRE BY DIANA" },
 ];
 
 export default async function HomePage() {
@@ -40,16 +40,16 @@ export default async function HomePage() {
               className="mb-5 w-fit border-resin-gold/50 bg-resin-gold/5 text-resin-gold"
             >
               <Sparkles className="mr-1.5 h-3.5 w-3.5" />
-              Handmade in Accra · Ghana
+              Handmade in Kumasi · Ghana
             </Badge>
-            <h1 className="text-5xl font-bold leading-[1.05] md:text-7xl">
+            <h1 className="text-5xl font-bold leading-[1.05] md:text-7xl text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
               Poured with care.
               <br />
               <span className="text-resin bg-[length:200%_200%] animate-pour">
                 Wrapped with intention.
               </span>
             </h1>
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-6 max-w-lg text-lg leading-relaxed text-foreground/90 drop-shadow-[0_1px_6px_rgba(0,0,0,0.4)]">
               Resin art, custom-printed gifts, scented candles, and thoughtful paper packaging — plus online
               courses for anyone who wants to make their own.
             </p>
@@ -61,7 +61,7 @@ export default async function HomePage() {
                 <Link href="/courses">Learn resin art</Link>
               </Button>
             </div>
-            <div className="mt-10 grid grid-cols-3 gap-3 text-xs text-muted-foreground">
+            <div className="mt-10 grid grid-cols-3 gap-3 text-xs text-foreground/80">
               <div className="flex items-center gap-1.5"><ShieldCheck className="h-4 w-4 text-resin-gold" /> Secure checkout</div>
               <div className="flex items-center gap-1.5"><Truck className="h-4 w-4 text-resin-gold" /> Nationwide delivery</div>
               <div className="flex items-center gap-1.5"><GraduationCap className="h-4 w-4 text-resin-gold" /> Beginner-friendly</div>
@@ -104,7 +104,7 @@ export default async function HomePage() {
           </Button>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {categories.map(({ slug, title, Icon, blurb }, idx) => (
+          {categories.map(({ slug, title, Icon, blurb, brand }, idx) => (
             <Link
               key={slug}
               href={`/shop?category=${slug}`}
@@ -118,6 +118,10 @@ export default async function HomePage() {
                   </div>
                   <h3 className="text-lg font-semibold">{title}</h3>
                   <p className="text-sm text-muted-foreground">{blurb}</p>
+                  <span className="mt-auto inline-flex items-center gap-1 text-[11px] font-medium tracking-wide text-resin-gold/80">
+                    <Sparkles className="h-3 w-3" />
+                    {brand}
+                  </span>
                 </CardContent>
               </Card>
             </Link>
@@ -241,7 +245,7 @@ export default async function HomePage() {
             name: siteConfig.name,
             description: siteConfig.description,
             url: siteConfig.url,
-            address: { "@type": "PostalAddress", addressCountry: "GH", addressLocality: "Accra" },
+            address: { "@type": "PostalAddress", addressCountry: "GH", addressLocality: "Kumasi" },
             currenciesAccepted: "GHS",
             paymentAccepted: "Mobile Money, Visa, Mastercard",
           }),

@@ -1,8 +1,8 @@
-# Resin Studio
+# Dee's Resin Craft & Souvenirs Collection
 
-Modern, SEO-optimised web app for a Ghana-based resin artist — storefront (resin art,
-gift packaging, custom T-shirts, mugs, scented candles), gallery, contact, plus a
-**students area** with gated video lessons and downloadable PDF guides.
+Modern, SEO-optimised web app for a Kumasi-based gift shop — storefront (resin art,
+souvenirs, gift packaging, custom T-shirts, mugs, scented candles), gallery, contact,
+plus a **students area** with gated video lessons and downloadable PDF guides.
 
 ## Tech stack
 

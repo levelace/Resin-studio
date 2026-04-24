@@ -33,7 +33,7 @@ export function SiteHeader() {
           <span className="relative inline-block h-9 w-9 rounded-full bg-resin-gradient shadow-[0_0_20px_-4px_hsl(var(--resin-gold)/0.7)] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
             <span className="absolute inset-[3px] rounded-full bg-background/30 mix-blend-overlay" />
           </span>
-          <span className="hidden sm:inline">{siteConfig.name}</span>
+          <span className="text-sm sm:text-xl truncate max-w-[180px] sm:max-w-none">{siteConfig.name}</span>
         </Link>
 
         <nav className="hidden gap-7 md:flex">

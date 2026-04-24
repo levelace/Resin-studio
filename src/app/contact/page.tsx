@@ -17,9 +17,9 @@ export default function ContactPage() {
             Custom order, bulk hamper, press, or wholesale enquiry? We usually reply within a working day.
           </p>
           <ul className="mt-8 space-y-4 text-sm">
-            <li className="flex items-center gap-3"><Mail className="h-5 w-5 text-primary" /> hello@resinstudio.gh</li>
-            <li className="flex items-center gap-3"><Phone className="h-5 w-5 text-primary" /> +233 20 000 0000 (WhatsApp)</li>
-            <li className="flex items-center gap-3"><MapPin className="h-5 w-5 text-primary" /> Accra, Ghana</li>
+            <li className="flex items-center gap-3"><Mail className="h-5 w-5 text-primary" /> hello@deesresincraft.gh</li>
+            <li className="flex items-center gap-3"><Phone className="h-5 w-5 text-primary" /> +233 24 398 1613 (WhatsApp)</li>
+            <li className="flex items-center gap-3"><MapPin className="h-5 w-5 text-primary" /> Manhiya Palace Museum, Kumasi, Ghana</li>
           </ul>
         </div>
         <ContactForm />
