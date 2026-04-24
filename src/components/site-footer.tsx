@@ -16,6 +16,15 @@ export function SiteFooter() {
             Handcrafted resin art, souvenirs, and thoughtful gift packaging, made in Kumasi, Ghana. Custom prints, scented candles,
             and online resin courses.
           </p>
+          <div className="mt-4 space-y-1.5">
+            <p className="text-xs font-semibold text-foreground/70">Our Brands</p>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium text-resin-gold">K&D Resincraft/Souvenirs Hub</span> — Resin souvenirs &amp; home décor
+            </p>
+            <p className="text-xs text-muted-foreground">
+              <span className="font-medium text-resin-gold">D&apos;LUMIÈRE BY DIANA</span> — Scented candles
+            </p>
+          </div>
         </div>
         <div>
           <h4 className="mb-3 text-sm font-semibold">Shop</h4>
@@ -53,7 +62,7 @@ export function SiteFooter() {
               <MessageCircle className="h-4 w-4" />
             </a>
             <a
-              href="https://www.tiktok.com/@deesresincraft"
+              href="https://www.tiktok.com/@kandresincraft"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="TikTok"
