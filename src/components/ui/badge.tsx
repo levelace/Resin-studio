@@ -7,9 +7,9 @@ export function Badge({
   ...props
 }: React.HTMLAttributes<HTMLSpanElement> & { variant?: "default" | "secondary" | "outline" }) {
   const styles = {
-    default: "bg-primary/10 text-primary border-primary/20",
-    secondary: "bg-secondary text-secondary-foreground border-border",
-    outline: "bg-transparent border-border text-foreground",
+    default: "bg-resin-gold/10 text-resin-gold border-resin-gold/30",
+    secondary: "bg-secondary text-secondary-foreground border-border/80",
+    outline: "bg-background/40 border-border/80 text-foreground backdrop-blur",
   }[variant];
   return (
     <span

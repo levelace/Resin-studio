@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { verifyTransaction } from "@/lib/paystack";
 import { Button } from "@/components/ui/button";
+import { fulfillOrder } from "@/lib/fulfill-order";
 
 export const metadata: Metadata = {
   title: "Payment successful",
@@ -25,27 +26,14 @@ export default async function SuccessPage({
       const verify = await verifyTransaction(reference);
       if (verify?.data?.status === "success") {
         confirmed = true;
-        await prisma.order.updateMany({
-          where: { paystackRef: reference, status: { not: "paid" } },
-          data: { status: "paid" },
-        });
-        // Activate any course enrolments attached to this order.
+        // Shared idempotent fulfilment: marks paid, enrols, decrements stock.
+        // If the webhook already ran, this is a no-op.
+        await fulfillOrder(reference);
         const order = await prisma.order.findUnique({
           where: { paystackRef: reference },
-          include: { items: true },
+          select: { id: true },
         });
-        if (order) {
-          for (const it of order.items) {
-            if (it.kind === "course" && it.courseId && order.userId) {
-              await prisma.enrollment.upsert({
-                where: { userId_courseId: { userId: order.userId, courseId: it.courseId } },
-                update: { status: "active", source: "purchase" },
-                create: { userId: order.userId, courseId: it.courseId, status: "active", source: "purchase" },
-              });
-            }
-          }
-          orderTitle = `Order #${order.id.slice(-6).toUpperCase()}`;
-        }
+        if (order) orderTitle = `Order #${order.id.slice(-6).toUpperCase()}`;
       }
     } catch {
       // fallthrough — we'll still thank them; webhook will reconcile.

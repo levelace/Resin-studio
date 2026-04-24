@@ -36,11 +36,15 @@ export default async function ShopPage({
 
   return (
     <div className="container py-12">
-      <header className="mb-10">
+      <header className="mb-10 animate-fade-in-up">
         <h1 className="text-4xl font-bold md:text-5xl">
-          {category ? categoryLabels[category] ?? "Shop" : "Shop all"}
+          {category ? (
+            <>The <span className="text-resin">{(categoryLabels[category] ?? "shop").toLowerCase()}</span> collection</>
+          ) : (
+            <>Shop <span className="text-resin">all</span></>
+          )}
         </h1>
-        <p className="mt-2 text-muted-foreground">
+        <p className="mt-3 max-w-2xl text-muted-foreground">
           All prices in GHS. Delivery across Ghana, pay with card or Mobile Money at checkout.
         </p>
       </header>
@@ -59,28 +63,36 @@ export default async function ShopPage({
         </p>
       ) : (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {products.map((p) => {
+          {products.map((p, idx) => {
             const images = JSON.parse(p.images) as string[];
             return (
-              <Link key={p.id} href={`/shop/${p.slug}`} className="group">
-                <div className="relative aspect-square overflow-hidden rounded-xl border bg-secondary/30">
+              <Link
+                key={p.id}
+                href={`/shop/${p.slug}`}
+                className="group block animate-fade-in-up"
+                style={{ animationDelay: `${Math.min(idx, 12) * 50}ms` }}
+              >
+                <div className="relative aspect-square overflow-hidden rounded-xl border border-border/80 bg-secondary/30 transition-all duration-500 group-hover:border-resin-gold/50 group-hover:shadow-[0_24px_60px_-24px_hsl(var(--resin-pink)/0.55)]">
                   <Image
                     src={images[0] ?? "/placeholder.svg"}
                     alt={p.title}
                     fill
                     sizes="(min-width:1280px) 22vw, (min-width:640px) 40vw, 90vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.07]"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent opacity-80 transition-opacity group-hover:opacity-50" />
                   {p.featured && (
-                    <Badge className="absolute left-3 top-3">Featured</Badge>
+                    <Badge className="absolute left-3 top-3 bg-resin-gradient text-primary-foreground border-transparent shadow-[0_6px_16px_-6px_hsl(var(--resin-pink)/0.8)]">
+                      Featured
+                    </Badge>
                   )}
                 </div>
                 <div className="mt-3 flex items-start justify-between gap-3">
                   <div>
-                    <h3 className="font-medium">{p.title}</h3>
+                    <h3 className="font-medium transition-colors group-hover:text-resin-gold">{p.title}</h3>
                     <p className="text-xs text-muted-foreground">{categoryLabels[p.category] ?? p.category}</p>
                   </div>
-                  <p className="text-sm font-semibold">{formatPrice(p.priceMinor, p.currency)}</p>
+                  <p className="text-sm font-semibold text-resin-gold">{formatPrice(p.priceMinor, p.currency)}</p>
                 </div>
               </Link>
             );
@@ -96,8 +108,10 @@ function CategoryLink({ slug, current, children }: { slug: string; current?: str
   return (
     <Link
       href={slug ? `/shop?category=${slug}` : "/shop"}
-      className={`rounded-full border px-4 py-1.5 text-sm transition-colors ${
-        active ? "border-primary bg-primary text-primary-foreground" : "border-border bg-background hover:bg-secondary"
+      className={`rounded-full border px-4 py-1.5 text-sm transition-all duration-300 ${
+        active
+          ? "border-transparent bg-resin-gradient text-primary-foreground shadow-[0_6px_16px_-6px_hsl(var(--resin-pink)/0.7)]"
+          : "border-border bg-background/60 text-muted-foreground backdrop-blur hover:border-resin-gold/50 hover:text-foreground"
       }`}
     >
       {children}

@@ -94,10 +94,12 @@ export async function POST(req: Request) {
     return NextResponse.json({ authorizationUrl: init.data.authorization_url });
   }
 
-  // Cart checkout (physical goods)
-  const productIds = parsed.data.items.map((i) => i.productId);
+  // Cart checkout (physical goods). Dedupe productIds first — the cart groups
+  // by (productId, customization), so the same productId can legitimately
+  // appear multiple times in items with different customization text.
+  const productIds = Array.from(new Set(parsed.data.items.map((i) => i.productId)));
   const products = await prisma.product.findMany({ where: { id: { in: productIds }, published: true } });
-  if (products.length !== parsed.data.items.length) {
+  if (products.length !== productIds.length) {
     return NextResponse.json({ error: "One or more items are no longer available" }, { status: 409 });
   }
 

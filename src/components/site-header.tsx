@@ -24,10 +24,15 @@ export function SiteHeader() {
   const cartCount = useCartCount();
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur">
+    <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/70 backdrop-blur-md">
       <div className="container flex h-16 items-center justify-between gap-4">
-        <Link href="/" className="flex items-center gap-2 font-display text-xl font-semibold tracking-tight">
-          <span className="inline-block h-8 w-8 rounded-full bg-gradient-to-br from-primary via-accent to-primary/70 shadow" />
+        <Link
+          href="/"
+          className="group flex items-center gap-2 font-display text-xl font-semibold tracking-tight"
+        >
+          <span className="relative inline-block h-9 w-9 rounded-full bg-resin-gradient shadow-[0_0_20px_-4px_hsl(var(--resin-gold)/0.7)] transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
+            <span className="absolute inset-[3px] rounded-full bg-background/30 mix-blend-overlay" />
+          </span>
           <span className="hidden sm:inline">{siteConfig.name}</span>
         </Link>
 
@@ -37,8 +42,9 @@ export function SiteHeader() {
               key={item.href}
               href={item.href}
               className={cn(
-                "text-sm font-medium text-muted-foreground transition-colors hover:text-foreground",
-                pathname === item.href && "text-foreground",
+                "relative text-sm font-medium text-muted-foreground transition-colors hover:text-foreground",
+                "after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:rounded-full after:bg-resin-gradient after:transition-all after:duration-300 hover:after:w-full",
+                pathname === item.href && "text-foreground after:w-full",
               )}
             >
               {item.label}
@@ -52,7 +58,7 @@ export function SiteHeader() {
               <ShoppingBag className="h-5 w-5" />
             </Button>
             {cartCount > 0 && (
-              <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold text-primary-foreground">
+              <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-resin-gradient px-1 text-[10px] font-bold text-primary-foreground shadow-[0_0_12px_-2px_hsl(var(--resin-gold)/0.9)] animate-glow-pulse">
                 {cartCount}
               </span>
             )}

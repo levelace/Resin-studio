@@ -4,12 +4,13 @@ import { siteConfig } from "@/lib/utils";
 
 export function SiteFooter() {
   return (
-    <footer className="mt-24 border-t border-border/60 bg-secondary/40">
+    <footer className="relative mt-24 border-t border-border/60 bg-background/50 backdrop-blur">
+      <div aria-hidden className="resin-divider absolute inset-x-0 top-0" />
       <div className="container grid gap-10 py-12 md:grid-cols-4">
         <div>
           <div className="mb-3 flex items-center gap-2 font-display text-lg font-semibold">
-            <span className="inline-block h-7 w-7 rounded-full bg-gradient-to-br from-primary via-accent to-primary/70" />
-            {siteConfig.name}
+            <span className="inline-block h-7 w-7 rounded-full bg-resin-gradient shadow-[0_0_14px_-4px_hsl(var(--resin-gold)/0.8)]" />
+            <span className="text-resin">{siteConfig.name}</span>
           </div>
           <p className="text-sm text-muted-foreground">
             Handcrafted resin art and thoughtful gift packaging, made in Ghana. Custom prints, scented candles,

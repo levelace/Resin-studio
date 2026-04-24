@@ -35,8 +35,13 @@ export default async function DashboardPage() {
 
   return (
     <div className="container py-12">
-      <header className="mb-10">
-        <h1 className="text-4xl font-bold">Welcome{session.user.name ? `, ${session.user.name.split(" ")[0]}` : ""}</h1>
+      <header className="mb-10 animate-fade-in-up">
+        <h1 className="text-4xl font-bold">
+          Welcome{session.user.name ? ", " : ""}
+          {session.user.name ? (
+            <span className="text-resin">{session.user.name.split(" ")[0]}</span>
+          ) : null}
+        </h1>
         <p className="mt-1 text-muted-foreground">Your enrolled courses, downloadable guides, and recent orders.</p>
       </header>
 
@@ -49,14 +54,20 @@ export default async function DashboardPage() {
           </div>
         ) : (
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {enrollments.map(({ course }) => (
-              <Link key={course.id} href={`/dashboard/course/${course.slug}`} className="group">
-                <div className="overflow-hidden rounded-xl border bg-card transition-shadow group-hover:shadow-lg">
-                  <div className="relative aspect-video">
-                    <Image src={course.coverImage} alt={course.title} fill sizes="(min-width:1024px) 30vw, 50vw" className="object-cover" />
+            {enrollments.map(({ course }, idx) => (
+              <Link
+                key={course.id}
+                href={`/dashboard/course/${course.slug}`}
+                className="group animate-fade-in-up"
+                style={{ animationDelay: `${idx * 60}ms` }}
+              >
+                <div className="resin-card overflow-hidden rounded-xl hover-lift">
+                  <div className="relative aspect-video overflow-hidden">
+                    <Image src={course.coverImage} alt={course.title} fill sizes="(min-width:1024px) 30vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.06]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
                   </div>
                   <div className="p-4">
-                    <h3 className="font-semibold">{course.title}</h3>
+                    <h3 className="font-semibold transition-colors group-hover:text-resin-gold">{course.title}</h3>
                     <p className="mt-1 text-xs text-muted-foreground">{course.lessons.length} lessons · lifetime access</p>
                   </div>
                 </div>
